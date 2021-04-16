@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+html, body {
+	background:linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
+	font-size:1.1rem;
+	font-family:'Quicksand', sans-serif;
+	height:100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#mainbox {
+	width: 100vw;
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#signinbox {
+	width: 30%;
+	height: 30%;
+	background-color: white;
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#signinbox>span {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+#signoutbox {
+	display: flex;
+	margin-top: 2%;
+	margin-bottom: 10px;
+	justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#todolist {
+    margin:3rem auto;
+    padding:2rem 3rem 3rem;
+    max-width:700px;
+    background:#FF6666;
+    color:#FFF;
+    box-shadow:-20px -20px 0px 0px rgba(100,100,100,.1);
+}
+
+#mainheading {
+	width: 100%;
+}
+
+#newtodoform {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.todoinput {
+	width: 70%;
+}
+
+.submitbutton {
+	width: 20%;
+}
+
+.todoli {
+	background-color: rgba(255,255,255,0.1);
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+}
+
+#todolitext:active {
+	border: none;
+	width: 90%;
+}
+
+.complete {
+	text-decoration: line-through;
+}
+
+#todolidelete {
+	width: 10%
 }
