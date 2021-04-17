@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { auth, firestore, functions } from "./firebase";
-import firebase from 'firebase'
+import { firestore } from "./firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -14,10 +13,8 @@ const DetailButton = styled(Button)({
 
 const Todos = () => {
     const [todo, setTodo] = useState("")
-    const todosRef = firestore.collection(`users/${auth.currentUser.uid}/todos`)
+    const todosRef = firestore.collection(`users/todos/list`)
     const [todos] = useCollectionData(todosRef, {idField: "id"})
-
-    const signOut = () => auth.signOut()
 
     const onSubmitTodo = (evt) => {
         evt.preventDefault()
@@ -25,18 +22,14 @@ const Todos = () => {
         setTodo("")
         todosRef.add({
             text: todo,
-            complete: false,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            complete: false
         })
     }
 
     return (
         <>
-            <header id="signoutbox">
-                <Button variant="contained" size="large" color="primary" onClick={signOut}><strong>Sign Out</strong></Button>
-            </header>
             <main id="todolist">
-                <h1 className="text-center"><strong>Your Task List</strong></h1>
+                <h1 className="text-center"><strong>ReflxzR's Todo List</strong></h1>
                 <form onSubmit={onSubmitTodo}>
                     <div id="newtodoform" className="my-5">
                         <TextField className="todoinput" required value={todo} onChange={(evt) => setTodo(evt.target.value)} id="title" label="Enter A New Todo" type="text"/>
@@ -52,7 +45,7 @@ const Todos = () => {
 
 
 const Todo = ({ id, complete, text }) => {
-    const todosRef = firestore.collection(`users/${auth.currentUser.uid}/todos`)
+    const todosRef = firestore.collection(`users/todos/list`)
     const onCompleteTodo = (id, complete) => todosRef.doc(id).set({ complete: !complete }, { merge: true })
   
     const onDeleteTodo = (id) => todosRef.doc(id).delete()
